@@ -9,7 +9,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /backbone/, loader: "imports?define=>false" },
+            //{ test: /backbone/, loader: "imports?define=>false" },
             { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" }
         ]
     },
@@ -18,6 +18,6 @@ module.exports = {
            "process.env.NODE_ENV": JSON.stringify('production')
         }),
         new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
     ]
 };
