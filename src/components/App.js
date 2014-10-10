@@ -13,7 +13,7 @@ module.exports = React.createClass({
     componentDidMount: function() {
         RouterService.on("route:search", function(search) {
             this.setState({ search: search });
-        }.bind(this))
+        }.bind(this));
     },
 
     render: function() {

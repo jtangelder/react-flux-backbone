@@ -14,7 +14,7 @@ TodoService.dispatchToken = Dispatcher.register(function(payload){
         case c.TODO_ADD:
             var text = data.text.trim();
             if (text !== '') {
-                TodoStore.add({ text: text });
+                TodoService.add({ text: text });
             }
             break;
 
@@ -23,7 +23,7 @@ TodoService.dispatchToken = Dispatcher.register(function(payload){
             break;
 
         case c.TODO_REMOVE:
-            TodoStore.remove(data.todo);
+            TodoService.remove(data.todo);
             break;
     }
 });
