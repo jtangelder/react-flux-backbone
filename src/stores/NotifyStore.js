@@ -44,7 +44,6 @@ NotifyStore.dispatchToken = Dispatcher.register(function(payload){
             });
             break;
     }
-    return true;
 });
 
 module.exports = NotifyStore;
