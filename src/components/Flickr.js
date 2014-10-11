@@ -1,11 +1,11 @@
 var React = require('react');
-var storeMixin = require('../../utils/storeMixin');
+var storeMixin = require('../utils/storeMixin');
 
-var NotifyActions = require('../../actions/NotifyActions');
-var FlickrActions = require('../../actions/FlickrActions');
-var FlickrStore = require('../../stores/FlickrStore');
-var FlickrForm = require('./FlickrForm');
-var FlickrList = require('./FlickrList');
+var NotifyActions = require('../actions/NotifyActions');
+var FlickrActions = require('../actions/FlickrActions');
+var FlickrStore = require('../stores/FlickrStore');
+var FlickrForm = require('./Flickr/FlickrForm');
+var FlickrList = require('./Flickr/FlickrList');
 
 
 function getComponentState() {

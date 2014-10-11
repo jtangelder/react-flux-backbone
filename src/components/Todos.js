@@ -1,10 +1,10 @@
 var React = require('react');
-var storeMixin = require('../../utils/storeMixin');
+var storeMixin = require('../utils/storeMixin');
 
-var TodoActions = require('../../actions/TodoActions');
-var TodoStore = require('../../stores/TodoStore');
-var TodoForm = require('./TodoForm');
-var TodoList = require('./TodoList');
+var TodoActions = require('../actions/TodoActions');
+var TodoStore = require('../stores/TodoStore');
+var TodoForm = require('./Todos/TodoForm');
+var TodoList = require('./Todos/TodoList');
 
 
 function getComponentState() {
