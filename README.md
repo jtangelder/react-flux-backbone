@@ -19,5 +19,5 @@ python -m SimpleHTTPServer
 - React views.
 - React Mixin for easy-listing to the stores.
 - Flickr async example with loading notifications.
-- Dumb stores, smart actions. The actions should contain the business logic (XHR, validation(?)), 
+- Dumb stores, complex actions. The actions should contain the business logic (XHR, validation(?)), 
 the stores just for data.
