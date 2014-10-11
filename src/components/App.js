@@ -5,8 +5,10 @@ var storeMixin = require('../utils/storeMixin');
 var RouterStore = require('../stores/RouterStore');
 
 var Header = require('./Header');
+var Notify = require('./Notify');
 var Footer = require('./Footer');
 var Help = require('./Help');
+var Flickr = require('./Flickr');
 var Todos = require('./Todos');
 
 function getComponentState() {
@@ -29,6 +31,9 @@ module.exports = React.createClass({
             case c.ROUTE_HELP:
                 body = <Help />;
                 break;
+            case c.ROUTE_FLICKR:
+                body = <Flickr />;
+                break;
             case c.ROUTE_TODOS:
             default:
                 body = <Todos />;
@@ -36,6 +41,7 @@ module.exports = React.createClass({
 
         return <div>
             <Header />
+            <Notify />
             {body}
             <Footer />
         </div>;

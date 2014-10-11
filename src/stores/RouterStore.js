@@ -6,6 +6,7 @@ var Backbone = require('backbone');
 // set the application routes with their name defined as a constant
 var routesConfig = {
     "todos": c.ROUTE_TODOS,
+    "flickr": c.ROUTE_FLICKR,
     "help": c.ROUTE_HELP
 };
 

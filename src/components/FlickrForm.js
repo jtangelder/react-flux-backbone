@@ -1,14 +1,15 @@
 var React = require('react');
 
+
 module.exports = React.createClass({
     onSubmit: function(ev) {
         ev.preventDefault();
-        this.props.onAdd(this.refs.input.getDOMNode().value);
+        this.props.onSearch(this.refs.input.getDOMNode().value);
     },
 
     render: function() {
         return <form onSubmit={this.onSubmit}>
-            <input type="text" placeholder="Add a todo..." ref="input" name="text" />
+            <input type="text" placeholder="Search for a photo..." ref="input" name="text" />
         </form>
     }
 });

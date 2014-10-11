@@ -1,35 +1,50 @@
+var Backbone = require('backbone');
 var c = require('../constants');
 var Dispatcher = require('../dispatcher');
-var TodoCollection = require('../collections/TodoCollection');
 
-var TodoStore = new TodoCollection([
-    {text: 'todo 1'},
-    {text: 'todo 2'},
-    {text: 'todo 3'}
-]);
 
-TodoStore.dispatchToken = Dispatcher.register(function(payload){
+var NotifyStore = new Backbone.Model({
+    text: null,
+    visible: false,
+    closable: true
+});
+
+NotifyStore.dispatchToken = Dispatcher.register(function(payload){
     var data = payload.data;
     switch(payload.actionType) {
         case c.NOTIFY_LOADING:
-            var text = data.text.trim();
-            if (text !== '') {
-                TodoStore.add({ text: text });
-            }
+            NotifyStore.set({
+                text: data.text || 'Loading...',
+                type: c.NOTIFY_LOADING,
+                visible: true,
+                closable: false
+            });
             break;
 
         case c.NOTIFY_LOADED:
-            data.todo.toggleComplete();
+            if(NotifyStore.get('type') === c.NOTIFY_LOADING) {
+                NotifyStore.set({
+                    visible: false
+                });
+            }
             break;
 
-        case c.NOTIFY_PROMPT:
-            TodoStore.remove(data.todo);
+        case c.NOTIFY_HIDE:
+            NotifyStore.set({
+                visible: false
+            });
             break;
 
         case c.NOTIFY_ALERT:
-            TodoStore.remove(data.todo);
+            NotifyStore.set({
+                text: data.text,
+                type: c.NOTIFY_ALERT,
+                visible: true,
+                closable: true
+            });
             break;
     }
+    return true;
 });
 
-module.exports = TodoStore;
+module.exports = NotifyStore;

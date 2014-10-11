@@ -14,6 +14,7 @@ module.exports = React.createClass({
             <h1>My App</h1>
             <ul>
                 <li><a href="todos" onClick={this.navigate}>Todos</a></li>
+                <li><a href="flickr" onClick={this.navigate}>Flickr</a></li>
                 <li><a href="help" onClick={this.navigate}>Help</a></li>
             </ul>
             <hr />

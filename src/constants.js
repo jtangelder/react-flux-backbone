@@ -8,5 +8,12 @@ module.exports = {
     ROUTE_DEFAULT: 'todos',
     ROUTE_TODOS: 'todos',
     ROUTE_HELP: 'help',
-    ROUTE_SEARCH: 'search'
+    ROUTE_FLICKR: 'flickr',
+
+    NOTIFY_LOADING: 'NOTIFY_LOADING',
+    NOTIFY_LOADED: 'NOTIFY_LOADED',
+    NOTIFY_ALERT: 'NOTIFY_ALERT',
+    NOTIFY_HIDE: 'NOTIFY_HIDE',
+
+    FLICKR_FIND: 'FLICKR_FIND'
 };
