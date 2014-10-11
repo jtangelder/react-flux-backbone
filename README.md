@@ -1,8 +1,8 @@
 react-flux-backbone
 ===================
 
-React with the Flux architecture, combined with the power of Backbones collections and models. I guess it's 
-implementation #123098123 on the web right now...
+React with the Flux architecture, combined with the power of Backbone's collections and models.
+Goal of this project is to create a kind of bootstrap for a React application with the given tools.
 
 ````
 npm install webpack -g
@@ -18,3 +18,7 @@ python -m SimpleHTTPServer
 - React views.
 - React Mixin for easy-listing to the stores.
 - XHR example with loading notification.
+
+## Todo
+- Find out if the current Notify/XHR component/store is implemented in a correct way. I would like to see all the 
+business logic in the actions, not in the stores (the FlickrStore makes a call to NotifyActions).
