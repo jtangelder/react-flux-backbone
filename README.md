@@ -17,4 +17,4 @@ python -m SimpleHTTPServer
 - Flux architecture.
 - React views.
 - React Mixin for easy-listing to the stores.
-
+- XHR example with loading notification.
