@@ -8,8 +8,8 @@ var Header = require('./Header');
 var Notify = require('./Notify');
 var Footer = require('./Footer');
 var Help = require('./Help');
-var Flickr = require('./Flickr');
-var Todos = require('./Todos');
+var Flickr = require('./Flickr/Flickr');
+var Todos = require('./Todos/Todos');
 
 function getComponentState() {
     return {

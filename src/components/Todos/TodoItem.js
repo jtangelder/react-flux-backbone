@@ -1,5 +1,5 @@
 var React = require('react');
-var TodoActions = require('../actions/TodoActions');
+var TodoActions = require('../../actions/TodoActions');
 
 module.exports = React.createClass({
     onToggle: function() {

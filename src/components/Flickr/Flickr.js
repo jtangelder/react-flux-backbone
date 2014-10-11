@@ -1,9 +1,9 @@
 var React = require('react');
-var storeMixin = require('../utils/storeMixin');
+var storeMixin = require('../../utils/storeMixin');
 
-var NotifyActions = require('../actions/NotifyActions');
-var FlickrActions = require('../actions/FlickrActions');
-var FlickrStore = require('../stores/FlickrStore');
+var NotifyActions = require('../../actions/NotifyActions');
+var FlickrActions = require('../../actions/FlickrActions');
+var FlickrStore = require('../../stores/FlickrStore');
 var FlickrForm = require('./FlickrForm');
 var FlickrList = require('./FlickrList');
 
