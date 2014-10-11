@@ -16,6 +16,7 @@ var RouterStore = new Backbone.Model({
     args: []
 });
 
+
 // setup a Backbone router instance
 var AppRouter = new (Backbone.Router.extend({
     // emit the router action
@@ -53,6 +54,7 @@ var AppRouter = new (Backbone.Router.extend({
         });
     }
 }));
+
 
 RouterStore.dispatchToken = Dispatcher.register(function(payload) {
     var data = payload.data;

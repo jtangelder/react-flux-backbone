@@ -2,7 +2,8 @@ react-flux-backbone
 ===================
 
 React with the Flux architecture, combined with the power of Backbone's collections and models.
-Goal of this project is to create a kind of bootstrap for a React application with the given tools.
+Goal of this project is to create a kind of bootstrap for a React application with the given tools, 
+and as simple as possible without the need to learn a different framework-like layer above these libraries.
 
 ````
 npm install webpack -g
@@ -21,4 +22,5 @@ python -m SimpleHTTPServer
 
 ## Todo
 - Find out if the current Notify/XHR component/store is implemented in a correct way. I would like to see all the 
-business logic in the actions, not in the stores (the FlickrStore makes a call to NotifyActions).
+business logic in the actions, not in the stores (the FlickrStore makes a call to NotifyActions). Something with 
+promises maybe? 
