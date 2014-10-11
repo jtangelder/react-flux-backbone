@@ -7,12 +7,12 @@ module.exports = function(/* serviceA, serviceB, ... */) {
     return {
         componentDidMount: function() {
             services.forEach(function(service) {
-                service.on("all", this.onServiceUpdate.bind(this));
+                service.on("all", this.onServiceUpdate);
             }, this);
         },
         componentWillUnmount: function() {
             services.forEach(function(service) {
-                service.off(null, this.onServiceUpdate.bind(this));
+                service.off(null, this.onServiceUpdate);
             }, this);
         }
     };

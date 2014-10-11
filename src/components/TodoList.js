@@ -13,14 +13,14 @@ function getComponentState() {
 module.exports = React.createClass({
     mixins: [serviceMixin(TodoService)],
 
+    getInitialState: getComponentState,
     onServiceUpdate: function() {
         this.setState(getComponentState.bind(this)());
     },
-    getInitialState: getComponentState,
 
     render: function() {
-        return <div>
-            {this.state.todos.map((todo)=> <TodoItem key={todo.cid} todo={todo} />)}
-        </div>
+        return <ul className='list-unstyled'>
+            {this.state.todos.map((todo)=> <li><TodoItem key={todo.cid} todo={todo} /></li> )}
+        </ul>
     }
 });

@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
     render: function() {
         return <form onSubmit={this.onSubmit}>
-            <input type="text" ref="input" name="text" />
+            <input type="text" placeholder="Add a todo..." ref="input" name="text" />
         </form>
     }
 });

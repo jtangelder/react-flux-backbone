@@ -17,7 +17,7 @@ module.exports = React.createClass({
         };
         return <div style={styles}>
             <input type="checkbox" onClick={this.onToggle} />
-            {this.props.todo.attributes.text}
+            <span> {this.props.todo.attributes.text}</span>
             <a href="#" onClick={this.onRemove}>[x]</a>
         </div>
     }

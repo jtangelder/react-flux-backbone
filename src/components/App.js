@@ -1,25 +1,42 @@
 var React = require('react');
+var c = require('../constants');
 
-var TodoForm = require('./TodoForm');
-var TodoList = require('./TodoList');
-
+var serviceMixin = require('../utils/serviceMixin');
 var RouterService = require('../services/RouterService');
 
-module.exports = React.createClass({
-    getInitialState: function() {
-        return { search: "" };
-    },
+var Header = require('./Header');
+var Footer = require('./Footer');
+var Help = require('./Help');
+var Todos = require('./Todos');
 
-    componentDidMount: function() {
-        RouterService.on("route:search", function(search) {
-            this.setState({ search: search });
-        }.bind(this));
+function getComponentState() {
+    return {
+        route: RouterService.attributes
+    };
+}
+
+module.exports = React.createClass({
+    mixins: [serviceMixin(RouterService)],
+
+    getInitialState: getComponentState,
+    onServiceUpdate: function() {
+        this.setState(getComponentState.bind(this)());
     },
 
     render: function() {
-        return <div>{this.state.search}
-            <TodoForm />
-            <TodoList search={this.state.search} />
-        </div>
+        var body;
+        switch(this.state.route.name) {
+            case c.ROUTE_HELP:
+                body = <Help />;
+                break;
+            default:
+                body = <Todos />;
+        }
+
+        return <div>
+            <Header />
+            {body}
+            <Footer />
+        </div>;
     }
 });
