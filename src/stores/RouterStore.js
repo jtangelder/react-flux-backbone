@@ -1,24 +1,23 @@
 var c = require('../constants');
 var Dispatcher = require('../dispatcher');
 var Backbone = require('backbone');
+var RouteModel = require('../models/RouteModel');
 
 
+// set the application routes with their name defined as a constant
 var routesConfig = {
     "todos": c.ROUTE_TODOS,
     "help": c.ROUTE_HELP
 };
 
-// simple model containing the route state
-var RouterService = new Backbone.Model({
-    name: c.ROUTE_DEFAULT,
-    args: []
-});
+// this store is just a simple model containing the route state
+var RouterStore = new RouteModel();
 
-// backbone router instance
+// setup a Backbone router instance
 var AppRouter = new (Backbone.Router.extend({
     // emit the router action
     emitRouteAction: function() {
-        RouterService.set({
+        RouterStore.set({
             name: this[0],
             args: [].slice.call(arguments, 0)
         });
@@ -38,7 +37,7 @@ var AppRouter = new (Backbone.Router.extend({
         Backbone.history.handlers.push({
             route: /(.*)/,
             callback: function() {
-                RouterService.set({
+                RouterStore.set({
                     name: c.ROUTE_DEFAULT,
                     args: []
                 });
@@ -52,16 +51,9 @@ var AppRouter = new (Backbone.Router.extend({
     }
 }));
 
-RouterService.dispatchToken = Dispatcher.register(function(payload) {
+RouterStore.dispatchToken = Dispatcher.register(function(payload) {
     var data = payload.data;
     switch (payload.actionType) {
-        case c.ROUTE_CHANGED:
-            RouterService.set({
-                name: data.name,
-                args: data.args || []
-            });
-            break;
-
         case c.ROUTE_NAVIGATE:
             AppRouter.navigate(data.fragment, {
                 trigger: data.trigger,
@@ -71,4 +63,4 @@ RouterService.dispatchToken = Dispatcher.register(function(payload) {
     }
 });
 
-module.exports = RouterService;
+module.exports = RouterStore;

@@ -1,26 +1,26 @@
 var React = require('react');
-var serviceMixin = require('../utils/serviceMixin');
-var TodoService = require('../services/TodoService');
+var storeMixin = require('../utils/storeMixin');
+var TodoStore = require('../stores/TodoStore');
 var TodoItem = require('./TodoItem');
 
 
 function getComponentState() {
     return {
-        todos: TodoService.models
+        todos: TodoStore.models
     };
 }
 
 module.exports = React.createClass({
-    mixins: [serviceMixin(TodoService)],
+    mixins: [storeMixin(TodoStore)],
 
     getInitialState: getComponentState,
-    onServiceUpdate: function() {
+    onStoreUpdate: function() {
         this.setState(getComponentState.bind(this)());
     },
 
     render: function() {
         return <ul className='list-unstyled'>
-            {this.state.todos.map((todo)=> <li><TodoItem key={todo.cid} todo={todo} /></li> )}
+            {this.state.todos.map((todo)=> <li key={todo.cid}><TodoItem todo={todo} /></li> )}
         </ul>
     }
 });

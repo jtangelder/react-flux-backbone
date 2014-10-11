@@ -1,8 +1,8 @@
 var React = require('react');
 var c = require('../constants');
 
-var serviceMixin = require('../utils/serviceMixin');
-var RouterService = require('../services/RouterService');
+var storeMixin = require('../utils/storeMixin');
+var RouterStore = require('../stores/RouterStore');
 
 var Header = require('./Header');
 var Footer = require('./Footer');
@@ -11,15 +11,15 @@ var Todos = require('./Todos');
 
 function getComponentState() {
     return {
-        route: RouterService.attributes
+        route: RouterStore.attributes
     };
 }
 
 module.exports = React.createClass({
-    mixins: [serviceMixin(RouterService)],
+    mixins: [storeMixin(RouterStore)],
 
     getInitialState: getComponentState,
-    onServiceUpdate: function() {
+    onStoreUpdate: function() {
         this.setState(getComponentState.bind(this)());
     },
 
