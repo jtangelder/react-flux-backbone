@@ -29,6 +29,7 @@ module.exports = React.createClass({
             case c.ROUTE_HELP:
                 body = <Help />;
                 break;
+            case c.ROUTE_TODOS:
             default:
                 body = <Todos />;
         }

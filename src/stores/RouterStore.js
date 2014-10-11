@@ -1,7 +1,6 @@
 var c = require('../constants');
 var Dispatcher = require('../dispatcher');
 var Backbone = require('backbone');
-var RouteModel = require('../models/RouteModel');
 
 
 // set the application routes with their name defined as a constant
@@ -11,7 +10,10 @@ var routesConfig = {
 };
 
 // this store is just a simple model containing the route state
-var RouterStore = new RouteModel();
+var RouterStore = new Backbone.Model({
+    name: c.ROUTE_DEFAULT,
+    args: []
+});
 
 // setup a Backbone router instance
 var AppRouter = new (Backbone.Router.extend({
