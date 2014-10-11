@@ -3,8 +3,6 @@ var c = require('../constants');
 var Dispatcher = require('../dispatcher');
 
 var NotifyActions = require('../actions/NotifyActions');
-
-
 var FlickrStore = new Backbone.Collection([]);
 
 
@@ -18,9 +16,9 @@ FlickrStore.dispatchToken = Dispatcher.register(function(payload){
                     format: 'json'
                 },
                 function(results) {
-                    console.log(results);
                     FlickrStore.reset();
                     FlickrStore.add(results.items);
+
                     NotifyActions.loaded();
                 });
             break;

@@ -23,7 +23,6 @@ module.exports = React.createClass({
     },
 
     onSearch: function(query) {
-        NotifyActions.loading('Searching...');
         FlickrActions.find(query);
     },
 
