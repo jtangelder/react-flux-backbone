@@ -25,10 +25,7 @@ TodoStore.dispatchToken = Dispatcher.register(function(payload){
     var data = payload.data;
     switch(payload.actionType) {
         case c.TODO_ADD:
-            var text = data.text.trim();
-            if (text !== '') {
-                TodoStore.add({ text: text });
-            }
+            TodoStore.add({ text: data.text });
             break;
 
         case c.TODO_TOGGLE:
