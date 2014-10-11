@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
     render: function() {
         return <form onSubmit={this.onSubmit}>
-            <input type="text" placeholder="Search for a photo..." ref="input" name="text" />
+            <input type="text" placeholder="Search for a Flickr tag..." ref="input" name="text" />
         </form>
     }
 });
