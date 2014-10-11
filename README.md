@@ -18,9 +18,4 @@ python -m SimpleHTTPServer
 - Flux architecture.
 - React views.
 - React Mixin for easy-listing to the stores.
-- XHR example with loading notification.
-
-## Todo
-- Find out if the current Notify/XHR component/store is implemented in a correct way. I would like to see all the 
-business logic in the actions, not in the stores (the FlickrStore makes a call to NotifyActions). Something with 
-promises maybe? 
+- Flickr async example with loading notifications.

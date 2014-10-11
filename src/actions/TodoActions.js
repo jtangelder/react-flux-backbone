@@ -1,20 +1,15 @@
 var c = require('../constants');
-var Dispatcher = require('../dispatcher');
+var dispatch = require('../dispatcher').dispatchAction;
+
 
 module.exports = {
     add: function(text) {
-        Dispatcher.dispatchAction(c.TODO_ADD, {
-            text: text
-        });
+        dispatch(c.TODO_ADD, { text: text });
     },
     toggle: function(todo) {
-        Dispatcher.dispatchAction(c.TODO_TOGGLE, {
-            todo: todo
-        });
+        dispatch(c.TODO_TOGGLE, { todo: todo });
     },
     remove: function(todo) {
-        Dispatcher.dispatchAction(c.TODO_REMOVE, {
-            todo: todo
-        });
+        dispatch(c.TODO_REMOVE, { todo: todo });
     }
 };

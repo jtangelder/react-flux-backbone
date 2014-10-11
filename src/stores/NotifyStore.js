@@ -9,10 +9,20 @@ var NotifyStore = new Backbone.Model({
     closable: true
 });
 
+function alert(text) {
+    NotifyStore.set({
+        text: data.text,
+        type: c.NOTIFY_ALERT,
+        visible: true,
+        closable: true
+    });
+}
+
 NotifyStore.dispatchToken = Dispatcher.register(function(payload){
     var data = payload.data;
     switch(payload.actionType) {
         case c.NOTIFY_LOADING:
+        case c.FLICKR_FIND:
             NotifyStore.set({
                 text: data.text || 'Loading...',
                 type: c.NOTIFY_LOADING,
@@ -22,6 +32,7 @@ NotifyStore.dispatchToken = Dispatcher.register(function(payload){
             break;
 
         case c.NOTIFY_LOADED:
+        case c.FLICKR_FIND_SUCCESS:
             if(NotifyStore.get('type') === c.NOTIFY_LOADING) {
                 NotifyStore.set({
                     visible: false
@@ -36,12 +47,11 @@ NotifyStore.dispatchToken = Dispatcher.register(function(payload){
             break;
 
         case c.NOTIFY_ALERT:
-            NotifyStore.set({
-                text: data.text,
-                type: c.NOTIFY_ALERT,
-                visible: true,
-                closable: true
-            });
+            alert(data.text);
+            break;
+
+        case c.FLICKR_FIND_FAIL:
+            alert('Flickr failed.');
             break;
     }
 });
