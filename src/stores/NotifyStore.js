@@ -11,7 +11,7 @@ var NotifyStore = new Backbone.Model({
 
 function alert(text) {
     NotifyStore.set({
-        text: data.text,
+        text: text,
         type: c.NOTIFY_ALERT,
         visible: true,
         closable: true
