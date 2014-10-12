@@ -21,7 +21,9 @@ python -m SimpleHTTPServer
 - Flickr async example with loading notifications.
 - Dumb stores, complex actions. The actions should contain the business logic (XHR, validation(?)), 
 the stores just for data.
-- Minified size is about ~70KB with Gzip, which includes jQuery, React, Backbone and the Flux dispatcher.
+- Example with webpack code-splitting based on the router.
+- Minified size is about ~70KB with Gzip, which includes jQuery, React, Backbone and the Flux dispatcher. When using 
+the require.ensure code-splitting functionality from webpack, this is increased with 10KB.
 
 ### Notes
 Inspired by this article; http://www.toptal.com/front-end/simple-data-flow-in-react-applications-using-flux-and-backbone

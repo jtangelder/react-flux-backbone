@@ -1,4 +1,4 @@
 node_modules
 .idea
-build/app.js
-build/app.js.map
+build/*.js
+build/*.js.map

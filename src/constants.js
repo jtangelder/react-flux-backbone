@@ -1,14 +1,14 @@
 module.exports = {
-    TODO_ADD: 'TODO_ADD',
-    TODO_TOGGLE: 'TODO_TOGGLE',
-    TODO_REMOVE: 'TODO_REMOVE',
+    ROUTE_TODOS: 'ROUTE_TODOS',
+    ROUTE_HELP: 'ROUTE_HELP',
+    ROUTE_FLICKR: 'ROUTE_FLICKR',
+    ROUTE_DEFAULT: 'ROUTE_TODOS',   // default route!
 
     ROUTE_NAVIGATE: 'ROUTE_NAVIGATE',
 
-    ROUTE_DEFAULT: 'todos',
-    ROUTE_TODOS: 'todos',
-    ROUTE_HELP: 'help',
-    ROUTE_FLICKR: 'flickr',
+    TODO_ADD: 'TODO_ADD',
+    TODO_TOGGLE: 'TODO_TOGGLE',
+    TODO_REMOVE: 'TODO_REMOVE',
 
     NOTIFY_HIDE: 'NOTIFY_HIDE',
 
