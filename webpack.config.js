@@ -1,6 +1,11 @@
 var webpack = require("webpack");
 
-module.exports = {
+// webpack sets the NODE_ENV when calling it with -p or -d
+if(!process.env.NODE_ENV) {
+    process.env.NODE_ENV = 'development';
+}
+
+var webpackConfig = {
     cache: true,
     entry: "./src/index.js",
     output: {
@@ -14,8 +19,15 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-           "process.env.NODE_ENV": JSON.stringify('production')
-        }),
-        new webpack.optimize.UglifyJsPlugin(),
+           "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+        })
     ]
 };
+
+if(process.env.NODE_ENV == 'production') {
+    webpackConfig.plugins.push(
+        new webpack.optimize.UglifyJsPlugin()
+    );
+}
+
+module.exports = webpackConfig;
