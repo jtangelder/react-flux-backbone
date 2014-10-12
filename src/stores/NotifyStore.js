@@ -3,41 +3,46 @@ var c = require('../constants');
 var Dispatcher = require('../dispatcher');
 
 
-var NotifyStore = new Backbone.Model({
-    text: null,
-    visible: false,
-    closable: true
-});
-
-function alert(text) {
-    NotifyStore.set({
-        text: text,
-        visible: true,
+var NotifyModel = Backbone.Model.extend({
+    default: {
+        text: null,
+        visible: false,
         closable: true
-    });
-}
+    },
 
-NotifyStore.dispatchToken = Dispatcher.register(function(payload){
-    switch(payload.actionType) {
-        case c.FLICKR_FIND:
-            NotifyStore.set({
-                text: 'Loading...',
-                visible: true,
-                closable: false
-            });
-            break;
+    initialize: function() {
+        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+    },
 
-        case c.NOTIFY_HIDE:
-        case c.FLICKR_FIND_SUCCESS:
-            NotifyStore.set({
-                visible: false
-            });
-            break;
+    handleDispatchAction: function(payload) {
+        switch(payload.actionType) {
+            case c.FLICKR_FIND:
+                this.set({
+                    text: 'Loading...',
+                    visible: true,
+                    closable: false
+                });
+                break;
 
-        case c.FLICKR_FIND_FAIL:
-            alert('Loading failed... Please try again.');
-            break;
+            case c.NOTIFY_HIDE:
+            case c.FLICKR_FIND_SUCCESS:
+                this.set({ visible: false });
+                break;
+
+            case c.FLICKR_FIND_FAIL:
+                this.alert('Loading failed... Please try again.');
+                break;
+        }
+    },
+
+    alert: function(text) {
+        this.set({
+            text: text,
+            visible: true,
+            closable: true
+        });
     }
 });
 
+var NotifyStore = new NotifyModel();
 module.exports = NotifyStore;

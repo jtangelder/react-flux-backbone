@@ -10,7 +10,7 @@ var FlickrList = require('./Flickr/FlickrList');
 
 function getComponentState() {
     return {
-        photos: FlickrStore.models
+        FlickrStore: FlickrStore
     };
 }
 
@@ -29,7 +29,7 @@ module.exports = React.createClass({
     render: function() {
         return <div>
             <FlickrForm onSearch={this.onSearch} />
-            <FlickrList photos={this.state.photos} />
+            <FlickrList FlickrStore={this.state.FlickrStore} />
         </div>
     }
 });

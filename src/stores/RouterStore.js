@@ -10,30 +10,43 @@ var routesConfig = {
     "help": c.ROUTE_HELP
 };
 
-// this store is just a simple model containing the route state
-var RouterStore = new Backbone.Model({
-    name: c.ROUTE_DEFAULT,
-    args: []
-});
 
-
-// setup a Backbone router instance
-var AppRouter = new (Backbone.Router.extend({
-    // emit the router action
-    emitRouteAction: function() {
-        RouterStore.set({
-            name: this[0],
-            args: [].slice.call(arguments, 0)
-        });
+var RouterModel = Backbone.Model.extend({
+    defaults: {
+        name: c.ROUTE_DEFAULT,
+        args: []
     },
 
-    // make sure all routes call the `handleRoute` method
     initialize: function() {
+        this.router = new AppRouter(this, routesConfig);
+        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+    },
+
+    handleDispatchAction: function(payload) {
+        switch(payload.actionType) {
+            case c.ROUTE_NAVIGATE:
+                this.router.navigate(payload.fragment, {
+                    trigger: payload.trigger,
+                    replace: payload.replace
+                });
+                break;
+        }
+    }
+});
+
+// setup a Backbone router instance
+var AppRouter = Backbone.Router.extend({
+    // make sure all routes call the `handleRoute` method
+    initialize: function(store, routes) {
+        this.store = store;
+
         var name, key;
-        for (key in routesConfig) {
-            if (routesConfig.hasOwnProperty(key)) {
-                name = routesConfig[key];
-                this.route(key, name, this.emitRouteAction.bind([name]));
+        for (key in routes) {
+            if (routes.hasOwnProperty(key)) {
+                name = routes[key];
+                this.route(key, name, function(/* name, args... */) {
+                    this.emitRouteAction.apply(this, arguments);
+                }.bind(this, name));
             }
         }
 
@@ -41,7 +54,7 @@ var AppRouter = new (Backbone.Router.extend({
         Backbone.history.handlers.push({
             route: /(.*)/,
             callback: function() {
-                RouterStore.set({
+                store.set({
                     name: c.ROUTE_DEFAULT,
                     args: []
                 });
@@ -52,20 +65,18 @@ var AppRouter = new (Backbone.Router.extend({
         Backbone.$(document).on("ready", function() {
             Backbone.history.start();
         });
-    }
-}));
+    },
 
-
-RouterStore.dispatchToken = Dispatcher.register(function(payload) {
-    var data = payload.data;
-    switch (payload.actionType) {
-        case c.ROUTE_NAVIGATE:
-            AppRouter.navigate(data.fragment, {
-                trigger: data.trigger,
-                replace: data.replace
-            });
-            break;
+    // emit the router action
+    emitRouteAction: function(/* name, args... */) {
+        this.store.set({
+            name: arguments[0],
+            args: [].slice.call(arguments, 1)
+        });
     }
 });
 
+
+// this store is just a simple model containing the route state
+var RouterStore = new RouterModel();
 module.exports = RouterStore;

@@ -9,7 +9,7 @@ var TodoList = require('./Todos/TodoList');
 
 function getComponentState() {
     return {
-        todos: TodoStore.models
+        TodoStore: TodoStore
     };
 }
 
@@ -28,7 +28,7 @@ module.exports = React.createClass({
     render: function() {
         return <div>
             <TodoForm onAdd={this.onAdd} />
-            <TodoList todos={this.state.todos} />
+            <TodoList TodoStore={this.state.TodoStore} />
         </div>
     }
 });

@@ -13,29 +13,35 @@ var Todo = Backbone.Model.extend({
     }
 });
 
-var TodoStore = new Backbone.Collection([
+
+var TodoCollection = Backbone.Collection.extend({
+    model: Todo,
+
+    initialize: function() {
+        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+    },
+
+    handleDispatchAction: function(payload) {
+        switch(payload.actionType) {
+            case c.TODO_ADD:
+                this.add({ text: payload.text });
+                break;
+
+            case c.TODO_TOGGLE:
+                payload.todo.toggleComplete();
+                break;
+
+            case c.TODO_REMOVE:
+                this.remove(payload.todo);
+                break;
+        }
+    }
+});
+
+var TodoStore = new TodoCollection([
     {text: 'todo 1'},
     {text: 'todo 2'},
     {text: 'todo 3'}
-], {
-    model: Todo
-});
-
-TodoStore.dispatchToken = Dispatcher.register(function(payload){
-    var data = payload.data;
-    switch(payload.actionType) {
-        case c.TODO_ADD:
-            TodoStore.add({ text: data.text });
-            break;
-
-        case c.TODO_TOGGLE:
-            data.todo.toggleComplete();
-            break;
-
-        case c.TODO_REMOVE:
-            TodoStore.remove(data.todo);
-            break;
-    }
-});
+]);
 
 module.exports = TodoStore;

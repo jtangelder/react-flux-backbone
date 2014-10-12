@@ -6,14 +6,13 @@ var dispatcher = new Dispatcher();
 /**
  * a bit more standardized way to dispatch actions
  * @param {String} actionType
- * @param {*} data
+ * @param {*} payload
  * @returns {*}
  */
-dispatcher.dispatchAction = function(actionType, data) {
-    return dispatcher.dispatch({
-        actionType: actionType,
-        data: data
-    })
+dispatcher.dispatchAction = function(actionType, payload) {
+    payload = payload || {};
+    payload.actionType = actionType;
+    return dispatcher.dispatch(payload)
 };
 
 module.exports = dispatcher;
