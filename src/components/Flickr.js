@@ -1,12 +1,10 @@
 var React = require('react');
 var storeMixin = require('../helpers/storeMixin');
-
-var NotifyActions = require('../actions/NotifyActions');
 var FlickrActions = require('../actions/FlickrActions');
 var FlickrStore = require('../stores/FlickrStore');
+
 var FlickrForm = require('./Flickr/FlickrForm');
 var FlickrList = require('./Flickr/FlickrList');
-
 
 
 module.exports = React.createClass({

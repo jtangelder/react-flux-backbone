@@ -1,6 +1,5 @@
 var React = require('react');
 var c = require('../constants');
-
 var storeMixin = require('../helpers/storeMixin');
 var RouterStore = require('../stores/RouterStore');
 
@@ -10,7 +9,6 @@ var Footer = require('./Footer');
 var Help = require('./Help');
 var Flickr = require('./Flickr');
 var Todos = require('./Todos');
-
 
 
 module.exports = React.createClass({

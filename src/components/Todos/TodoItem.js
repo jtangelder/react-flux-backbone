@@ -16,9 +16,11 @@ module.exports = React.createClass({
         var styles = {
             textDecoration: this.props.todo.get('complete') ? 'line-through' : 'none'
         };
-        return <div style={styles}>
+        return <div>
             <input type="checkbox" onClick={this.onToggle} />
-            <span> {this.props.todo.attributes.text}</span>
+            {' '}
+            <span style={styles}>{this.props.todo.attributes.text}</span>
+            {' '}
             <a href="#" onClick={this.onRemove}>[x]</a>
         </div>
     }

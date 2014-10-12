@@ -3,7 +3,10 @@ var Dispatcher = require('../dispatcher');
 var Backbone = require('backbone');
 
 
-// set the application routes with their name defined as a constant
+/**
+ * set the application routes with their name defined as a constant
+ * @example "url/:id": "name"
+ */
 var routesConfig = {
     "todos": c.ROUTE_TODOS,
     "flickr": c.ROUTE_FLICKR,
@@ -18,14 +21,14 @@ var RouterModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.router = new AppRouter(this, routesConfig);
+        this._router = new AppRouter(this, routesConfig);
         this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
     handleDispatch: function(payload) {
         switch(payload.actionType) {
             case c.ROUTE_NAVIGATE:
-                this.router.navigate(payload.fragment, {
+                this._router.navigate(payload.fragment, {
                     trigger: payload.trigger,
                     replace: payload.replace
                 });
@@ -34,9 +37,7 @@ var RouterModel = Backbone.Model.extend({
     }
 });
 
-// setup a Backbone router instance
 var AppRouter = Backbone.Router.extend({
-    // make sure all routes call the `handleRoute` method
     initialize: function(store, routes) {
         this.store = store;
 
@@ -61,13 +62,11 @@ var AppRouter = Backbone.Router.extend({
             }
         });
 
-        // start the router when everything is loaded
         Backbone.$(document).on("ready", function() {
             Backbone.history.start();
         });
     },
 
-    // emit the router action
     emitRouteAction: function(/* route, args... */) {
         this.store.set({
             route: arguments[0],
@@ -76,6 +75,4 @@ var AppRouter = Backbone.Router.extend({
     }
 });
 
-
-// this store is just a simple model containing the route state
 module.exports = new RouterModel();

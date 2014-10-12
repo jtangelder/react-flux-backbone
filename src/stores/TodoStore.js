@@ -38,8 +38,4 @@ var TodoCollection = Backbone.Collection.extend({
     }
 });
 
-module.exports = new TodoCollection([
-    {text: 'todo 1'},
-    {text: 'todo 2'},
-    {text: 'todo 3'}
-]);
+module.exports = new TodoCollection();
