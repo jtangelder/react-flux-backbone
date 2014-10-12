@@ -22,7 +22,7 @@ python -m SimpleHTTPServer
 - Dumb stores, complex actions. The actions should contain the business logic (XHR, validation(?)), 
 the stores just for data.
 - Example with webpack code-splitting based on the router.
-- Minified size is about ~80Kb with Gzip, which includes jQuery (~35Kb), React (~35Kb), Backbone (~7Kb), 
+- Minified size is about ~75Kb with Gzip, which includes jQuery (from CDN, ~30Kb), React (~35Kb), Backbone (~7Kb), 
 Underscore.js (~5Kb) and the Flux dispatcher.
 
 ### Notes
