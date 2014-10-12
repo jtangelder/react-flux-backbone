@@ -17,6 +17,11 @@ var webpackConfig = {
             { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" }
         ]
     },
+    externals: {
+        // require("jquery") is external and available
+        //  on the global var jQuery
+        "jquery": "jQuery"
+    },
     plugins: [
         new webpack.DefinePlugin({
            "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
