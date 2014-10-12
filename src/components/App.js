@@ -1,6 +1,6 @@
 var React = require('react');
-var process = require('process');
 var c = require('../constants');
+var process = require('process');
 var storeMixin = require('../helpers/storeMixin');
 var RouterStore = require('../stores/RouterStore');
 
@@ -16,7 +16,9 @@ module.exports = React.createClass({
         return {
             RouterStore: RouterStore,
             route: null,
-            bodyComponent: function() { return null }
+            bodyComponent: function() {
+                return null
+            }
         };
     },
 
@@ -33,9 +35,8 @@ module.exports = React.createClass({
         var route = this.state.RouterStore.get('route');
 
         // example of code-splitting with webpack
-        // this causes some overhead since it includes Modernizr
         // when you think this is unneeded, then you can just return the component with a simple switch statement
-        if(this.state.route != route) {
+        if (this.state.route != route) {
             switch (route) {
                 case c.ROUTE_HELP:
                     require.ensure([], function() {
@@ -59,6 +60,24 @@ module.exports = React.createClass({
         }
         return this.state.bodyComponent();
     },
+
+    /*
+    simple variant without the code-splitting
+
+        getBodyComponent: function() {
+            switch (this.state.RouterStore.get('route')) {
+                case c.ROUTE_HELP:
+                    return require('./Help')();
+
+                case c.ROUTE_FLICKR:
+                    return require('./Flickr')();
+
+                case c.ROUTE_TODOS:
+                default:
+                    return require('./Todos')();
+            }
+        },
+    */
 
     render: function() {
         return <div>
