@@ -44,5 +44,4 @@ var NotifyModel = Backbone.Model.extend({
     }
 });
 
-var NotifyStore = new NotifyModel();
-module.exports = NotifyStore;
+module.exports = new NotifyModel();

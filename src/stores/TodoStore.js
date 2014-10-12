@@ -38,10 +38,8 @@ var TodoCollection = Backbone.Collection.extend({
     }
 });
 
-var TodoStore = new TodoCollection([
+module.exports = new TodoCollection([
     {text: 'todo 1'},
     {text: 'todo 2'},
     {text: 'todo 3'}
 ]);
-
-module.exports = TodoStore;

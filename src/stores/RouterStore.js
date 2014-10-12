@@ -78,5 +78,4 @@ var AppRouter = Backbone.Router.extend({
 
 
 // this store is just a simple model containing the route state
-var RouterStore = new RouterModel();
-module.exports = RouterStore;
+module.exports = new RouterModel();

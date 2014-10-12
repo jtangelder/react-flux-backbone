@@ -27,5 +27,4 @@ var FlickrCollection = Backbone.Collection.extend({
 });
 
 
-var FlickrStore = new FlickrCollection();
-module.exports = FlickrStore;
+module.exports = new FlickrCollection();

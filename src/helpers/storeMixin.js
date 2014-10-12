@@ -5,7 +5,7 @@
 module.exports = function(store) {
     return {
         componentDidMount: function() {
-            store.on("all", function() {
+            store.on("add remove reset change", function() {
                 this.forceUpdate();
             }, this);
         },
