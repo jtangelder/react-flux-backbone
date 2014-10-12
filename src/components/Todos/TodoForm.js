@@ -1,5 +1,6 @@
 var React = require('react');
 
+
 module.exports = React.createClass({
     onSubmit: function(ev) {
         ev.preventDefault();
@@ -7,8 +8,10 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return <form onSubmit={this.onSubmit}>
-            <input type="text" placeholder="Add a todo..." required ref="input" name="text" />
+        return <form className="form-group" onSubmit={this.onSubmit}>
+            <input className="form-control" type="text" required
+                    placeholder="Add a todo..."
+                    ref="input" name="text" />
         </form>
     }
 });

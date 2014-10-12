@@ -8,8 +8,10 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return <form onSubmit={this.onSubmit}>
-            <input type="text" placeholder="Search for a Flickr tag..." required ref="input" name="text" />
+        return <form className="form-group" onSubmit={this.onSubmit}>
+            <input type="text" className="form-control" required
+                    placeholder="Search for a Flickr tag..."
+                    ref="input" name="text" />
         </form>
     }
 });
