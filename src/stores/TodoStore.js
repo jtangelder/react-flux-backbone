@@ -18,10 +18,10 @@ var TodoCollection = Backbone.Collection.extend({
     model: Todo,
 
     initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
-    handleDispatchAction: function(payload) {
+    handleDispatch: function(payload) {
         switch(payload.actionType) {
             case c.TODO_ADD:
                 this.add({ text: payload.text });

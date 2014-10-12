@@ -13,16 +13,16 @@ var routesConfig = {
 
 var RouterModel = Backbone.Model.extend({
     defaults: {
-        name: c.ROUTE_DEFAULT,
+        route: c.ROUTE_DEFAULT,
         args: []
     },
 
     initialize: function() {
         this.router = new AppRouter(this, routesConfig);
-        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
-    handleDispatchAction: function(payload) {
+    handleDispatch: function(payload) {
         switch(payload.actionType) {
             case c.ROUTE_NAVIGATE:
                 this.router.navigate(payload.fragment, {
@@ -40,13 +40,13 @@ var AppRouter = Backbone.Router.extend({
     initialize: function(store, routes) {
         this.store = store;
 
-        var name, key;
+        var route, key;
         for (key in routes) {
             if (routes.hasOwnProperty(key)) {
-                name = routes[key];
-                this.route(key, name, function(/* name, args... */) {
+                route = routes[key];
+                this.route(key, route, function(/* route, args... */) {
                     this.emitRouteAction.apply(this, arguments);
-                }.bind(this, name));
+                }.bind(this, route));
             }
         }
 
@@ -55,7 +55,7 @@ var AppRouter = Backbone.Router.extend({
             route: /(.*)/,
             callback: function() {
                 store.set({
-                    name: c.ROUTE_DEFAULT,
+                    route: c.ROUTE_DEFAULT,
                     args: []
                 });
             }
@@ -68,9 +68,9 @@ var AppRouter = Backbone.Router.extend({
     },
 
     // emit the router action
-    emitRouteAction: function(/* name, args... */) {
+    emitRouteAction: function(/* route, args... */) {
         this.store.set({
-            name: arguments[0],
+            route: arguments[0],
             args: [].slice.call(arguments, 1)
         });
     }

@@ -11,10 +11,10 @@ var NotifyModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
-    handleDispatchAction: function(payload) {
+    handleDispatch: function(payload) {
         switch(payload.actionType) {
             case c.FLICKR_FIND:
                 this.set({

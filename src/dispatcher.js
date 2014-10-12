@@ -1,18 +1,18 @@
 var Dispatcher = require('flux').Dispatcher;
 
 
-var dispatcher = new Dispatcher();
+var AppDispatcher = new Dispatcher();
 
 /**
  * a bit more standardized way to dispatch actions
  * @param {String} actionType
- * @param {*} payload
+ * @param {Object} [payload={}]
  * @returns {*}
  */
-dispatcher.dispatchAction = function(actionType, payload) {
+AppDispatcher.dispatchAction = function(actionType, payload) {
     payload = payload || {};
     payload.actionType = actionType;
-    return dispatcher.dispatch(payload)
+    return AppDispatcher.dispatch(payload)
 };
 
-module.exports = dispatcher;
+module.exports = AppDispatcher;

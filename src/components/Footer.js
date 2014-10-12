@@ -6,6 +6,7 @@ module.exports = React.createClass({
         ev.preventDefault();
         window.scrollTo(0, 0);
     },
+
     render: function() {
         return <div>
             <hr />

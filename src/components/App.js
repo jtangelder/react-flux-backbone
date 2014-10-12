@@ -1,7 +1,7 @@
 var React = require('react');
 var c = require('../constants');
 
-var storeMixin = require('../utils/storeMixin');
+var storeMixin = require('../helpers/storeMixin');
 var RouterStore = require('../stores/RouterStore');
 
 var Header = require('./Header');
@@ -11,23 +11,18 @@ var Help = require('./Help');
 var Flickr = require('./Flickr');
 var Todos = require('./Todos');
 
-function getComponentState() {
-    return {
-        route: RouterStore.attributes
-    };
-}
+
 
 module.exports = React.createClass({
     mixins: [storeMixin(RouterStore)],
 
-    getInitialState: getComponentState,
-    onStoreUpdate: function() {
-        this.setState(getComponentState.bind(this)());
+    getInitialState: function() {
+        return { RouterStore: RouterStore };
     },
 
     render: function() {
         var body;
-        switch(this.state.route.name) {
+        switch(this.state.RouterStore.get('route')) {
             case c.ROUTE_HELP:
                 body = <Help />;
                 break;

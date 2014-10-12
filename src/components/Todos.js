@@ -1,5 +1,5 @@
 var React = require('react');
-var storeMixin = require('../utils/storeMixin');
+var storeMixin = require('../helpers/storeMixin');
 
 var TodoActions = require('../actions/TodoActions');
 var TodoStore = require('../stores/TodoStore');
@@ -7,18 +7,13 @@ var TodoForm = require('./Todos/TodoForm');
 var TodoList = require('./Todos/TodoList');
 
 
-function getComponentState() {
-    return {
-        TodoStore: TodoStore
-    };
-}
+
 
 module.exports = React.createClass({
     mixins: [storeMixin(TodoStore)],
 
-    getInitialState: getComponentState,
-    onStoreUpdate: function() {
-        this.setState(getComponentState.bind(this)());
+    getInitialState: function() {
+        return { TodoStore: TodoStore };
     },
 
     onAdd: function(text) {

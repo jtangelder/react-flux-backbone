@@ -1,5 +1,5 @@
 var React = require('react');
-var storeMixin = require('../utils/storeMixin');
+var storeMixin = require('../helpers/storeMixin');
 
 var NotifyActions = require('../actions/NotifyActions');
 var FlickrActions = require('../actions/FlickrActions');
@@ -8,18 +8,12 @@ var FlickrForm = require('./Flickr/FlickrForm');
 var FlickrList = require('./Flickr/FlickrList');
 
 
-function getComponentState() {
-    return {
-        FlickrStore: FlickrStore
-    };
-}
 
 module.exports = React.createClass({
     mixins: [storeMixin(FlickrStore)],
 
-    getInitialState: getComponentState,
-    onStoreUpdate: function() {
-        this.setState(getComponentState.bind(this)());
+    getInitialState: function() {
+        return { FlickrStore: FlickrStore };
     },
 
     onSearch: function(query) {

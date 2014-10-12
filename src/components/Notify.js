@@ -1,19 +1,14 @@
 var React = require('react');
-var storeMixin = require('../utils/storeMixin');
+var storeMixin = require('../helpers/storeMixin');
 var NotifyStore = require('../stores/NotifyStore');
 var NotifyActions = require('../actions/NotifyActions');
 
 
-function getComponentState() {
-    return NotifyStore.attributes;
-}
-
 module.exports = React.createClass({
     mixins: [storeMixin(NotifyStore)],
 
-    getInitialState: getComponentState,
-    onStoreUpdate: function() {
-        this.setState(getComponentState.bind(this)());
+    getInitialState: function() {
+        return NotifyStore;
     },
 
     onClose: function(ev) {

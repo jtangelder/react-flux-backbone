@@ -21,3 +21,6 @@ python -m SimpleHTTPServer
 - Flickr async example with loading notifications.
 - Dumb stores, complex actions. The actions should contain the business logic (XHR, validation(?)), 
 the stores just for data.
+
+### Notes
+Inspired by this article; http://www.toptal.com/front-end/simple-data-flow-in-react-applications-using-flux-and-backbone

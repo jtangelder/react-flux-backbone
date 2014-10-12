@@ -13,10 +13,10 @@ var FlickrCollection = Backbone.Collection.extend({
     model: FlickrResult,
 
     initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatchAction.bind(this));
+        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
-    handleDispatchAction: function(payload) {
+    handleDispatch: function(payload) {
         switch (payload.actionType) {
             case c.FLICKR_FIND_SUCCESS:
                 this.reset();
