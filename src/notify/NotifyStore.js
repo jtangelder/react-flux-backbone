@@ -1,7 +1,8 @@
 var Backbone = require('backbone');
-var c = require('./constants');
 var Dispatcher = require('dispatcher');
 
+var c = require('./constants');
+var FlickrConstants = require('Flickr/constants');
 
 var NotifyModel = Backbone.Model.extend({
     default: {
@@ -16,7 +17,7 @@ var NotifyModel = Backbone.Model.extend({
 
     handleDispatch: function(payload) {
         switch(payload.actionType) {
-            case c.FLICKR_FIND:
+            case FlickrConstants.FLICKR_FIND:
                 this.set({
                     text: 'Loading...',
                     visible: true,
@@ -25,11 +26,11 @@ var NotifyModel = Backbone.Model.extend({
                 break;
 
             case c.NOTIFY_HIDE:
-            case c.FLICKR_FIND_SUCCESS:
+            case FlickrConstants.FLICKR_FIND_SUCCESS:
                 this.set({ visible: false });
                 break;
 
-            case c.FLICKR_FIND_FAIL:
+            case FlickrConstants.FLICKR_FIND_FAIL:
                 this.alert('Loading failed... Please try again.');
                 break;
         }

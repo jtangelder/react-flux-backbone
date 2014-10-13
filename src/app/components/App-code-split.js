@@ -10,7 +10,7 @@ var RouterStore = require('../RouterStore');
 
 var Header = require('./Header');
 var Footer = require('./Footer');
-var Notify = require('Notify/components/Notify');
+var Notify = require('notify/components/Notify');
 
 
 module.exports = React.createClass({
@@ -42,20 +42,20 @@ module.exports = React.createClass({
             switch (route) {
                 case 'help':
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('App/components/Help'));
+                        this.ensureBodyComponent(route, require('app/components/Help'));
                     }.bind(this));
                     break;
 
                 case 'flickr':
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('Flickr/components/Flickr'));
+                        this.ensureBodyComponent(route, require('flickr/components/Flickr'));
                     }.bind(this));
                     break;
 
                 case 'todos':
                 default:
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('Todos/components/Todos'));
+                        this.ensureBodyComponent(route, require('todos/components/Todos'));
                     }.bind(this));
                     break;
             }

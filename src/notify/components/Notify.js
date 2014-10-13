@@ -17,14 +17,14 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        if(this.state.visible) {
+        if(this.state.get('visible')) {
             var closeButton;
-            if(this.state.closable) {
+            if(this.state.get('closable')) {
                 closeButton = <a href="#" onClick={this.onClose}>[Close]</a>
             }
 
             return <div className="alert alert-info">
-                {this.state.text}
+                {this.state.get('text')}
                 {closeButton}
             </div>;
         }

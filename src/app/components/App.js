@@ -4,7 +4,7 @@ var storeMixin = require('helpers/storeMixin');
 var RouterStore = require('../RouterStore');
 
 var Header = require('./Header');
-var Notify = require('Notify/components/Notify');
+var Notify = require('notify/components/Notify');
 var Footer = require('./Footer');
 
 
@@ -18,14 +18,14 @@ module.exports = React.createClass({
     getBodyComponent: function() {
         switch (this.state.RouterStore.get('route')) {
             case 'help':
-                return require('App/components/Help')();
+                return require('app/components/Help')();
 
             case 'flickr':
-                return require('Flickr/components/Flickr')();
+                return require('flickr/components/Flickr')();
 
             case 'todos':
             default:
-                return require('Todos/components/Todos')();
+                return require('todos/components/Todos')();
         }
     },
 
