@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
-var c = require('../constants');
-var Dispatcher = require('../dispatcher');
+var c = require('./constants');
+var Dispatcher = require('dispatcher');
 
 
 var Todo = Backbone.Model.extend({

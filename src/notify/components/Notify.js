@@ -1,7 +1,7 @@
 var React = require('react');
-var storeMixin = require('../helpers/storeMixin');
-var NotifyStore = require('../stores/NotifyStore');
-var NotifyActions = require('../actions/NotifyActions');
+var storeMixin = require('helpers/storeMixin');
+var NotifyStore = require('../NotifyStore');
+var NotifyActions = require('../NotifyActions');
 
 
 module.exports = React.createClass({

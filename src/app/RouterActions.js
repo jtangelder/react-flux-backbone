@@ -1,5 +1,5 @@
-var c = require('../constants');
-var dispatch = require('../dispatcher').dispatchAction;
+var c = require('./constants');
+var dispatch = require('dispatcher').dispatchAction;
 var _ = require('underscore');
 
 

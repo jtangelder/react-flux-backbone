@@ -1,12 +1,11 @@
 var React = require('react');
-var RouterActions = require('../actions/RouterActions');
+var RouterActions = require('../RouterActions');
 
 
 module.exports = React.createClass({
     navigate: function(ev) {
         ev.preventDefault();
-        var fragment = ev.target.getAttribute('href');
-        RouterActions.navigate(fragment, true);
+        RouterActions.navigate(ev.target.getAttribute('href'), true);
     },
 
     render: function() {

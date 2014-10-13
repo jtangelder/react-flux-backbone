@@ -1,5 +1,5 @@
 var React = require('react');
-var TodoActions = require('../../actions/TodoActions');
+var TodoActions = require('../TodoActions');
 
 
 module.exports = React.createClass({
@@ -17,10 +17,8 @@ module.exports = React.createClass({
             textDecoration: this.props.todo.get('complete') ? 'line-through' : 'none'
         };
         return <div>
-            <input type="checkbox" onClick={this.onToggle} />
-            {' '}
-            <span style={styles}>{this.props.todo.attributes.text}</span>
-            {' '}
+            <input type="checkbox" onClick={this.onToggle} />{' '}
+            <span style={styles}>{this.props.todo.attributes.text}</span>{' '}
             <a href="#" onClick={this.onRemove}>[x]</a>
         </div>
     }
