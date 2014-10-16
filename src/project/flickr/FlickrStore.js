@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
-var c = require('./constants');
-var Dispatcher = require('dispatcher');
+var constants = require('./constants');
+var Dispatcher = require('project/dispatcher');
 
 
 var FlickrResult = Backbone.Model.extend({
@@ -18,7 +18,7 @@ var FlickrCollection = Backbone.Collection.extend({
 
     handleDispatch: function(payload) {
         switch (payload.actionType) {
-            case c.FLICKR_FIND_SUCCESS:
+            case constants.FLICKR_FIND_SUCCESS:
                 this.reset();
                 this.add(payload.items);
                 break;

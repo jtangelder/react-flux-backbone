@@ -1,6 +1,6 @@
-var c = require('./constants');
-var conf = require('settings');
-var Dispatcher = require('dispatcher');
+var conf = require('project/settings');
+var constants = require('./constants');
+var Dispatcher = require('project/dispatcher');
 var Backbone = require('backbone');
 
 
@@ -17,7 +17,7 @@ var RouterModel = Backbone.Model.extend({
 
     handleDispatch: function(payload) {
         switch(payload.actionType) {
-            case c.ROUTE_NAVIGATE:
+            case constants.ROUTE_NAVIGATE:
                 this._router.navigate(payload.fragment, {
                     trigger: payload.trigger,
                     replace: payload.replace
@@ -46,7 +46,7 @@ var AppRouter = Backbone.Router.extend({
             route: /(.*)/,
             callback: function() {
                 store.set({
-                    route: c.ROUTE_DEFAULT,
+                    route: constants.ROUTE_DEFAULT,
                     args: []
                 });
             }

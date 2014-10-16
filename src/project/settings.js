@@ -6,8 +6,10 @@ module.exports = {
     ROUTE_ROUTES: {
         "todos": 'todos',
         "flickr": 'flickr',
+        "flickr/:q": 'flickr',
         "help": 'help'
     },
 
-    ROUTE_DEFAULT: 'todos'
+    ROUTE_DEFAULT: 'todos',
+    ROUTE_TODOS: 'todos'
 };

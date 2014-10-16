@@ -1,5 +1,5 @@
 var React = require('react');
-var RouterActions = require('../RouterActions');
+var RouterActions = require('project/router/RouterActions');
 
 
 module.exports = React.createClass({

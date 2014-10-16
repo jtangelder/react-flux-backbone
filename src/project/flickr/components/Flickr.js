@@ -1,5 +1,5 @@
 var React = require('react');
-var storeMixin = require('helpers/storeMixin');
+var storeMixin = require('project/helpers/storeMixin');
 var FlickrActions = require('../FlickrActions');
 var FlickrStore = require('../FlickrStore');
 

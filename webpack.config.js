@@ -8,7 +8,7 @@ if(!process.env.NODE_ENV) {
 
 var webpackConfig = {
     cache: true,
-    entry: "./src/index.js",
+    entry: "./src/project/index.js",
     output: {
         path: path.join(__dirname, "build"),
         filename: "app.js"

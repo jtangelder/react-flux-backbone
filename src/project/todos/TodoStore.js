@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
-var c = require('./constants');
-var Dispatcher = require('dispatcher');
+var constants = require('./constants');
+var Dispatcher = require('project/dispatcher');
 
 
 var Todo = Backbone.Model.extend({
@@ -23,15 +23,15 @@ var TodoCollection = Backbone.Collection.extend({
 
     handleDispatch: function(payload) {
         switch(payload.actionType) {
-            case c.TODO_ADD:
+            case constants.TODO_ADD:
                 this.add({ text: payload.text });
                 break;
 
-            case c.TODO_TOGGLE:
+            case constants.TODO_TOGGLE:
                 payload.todo.toggleComplete();
                 break;
 
-            case c.TODO_REMOVE:
+            case constants.TODO_REMOVE:
                 this.remove(payload.todo);
                 break;
         }

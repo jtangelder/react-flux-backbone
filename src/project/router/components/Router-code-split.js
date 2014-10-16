@@ -1,16 +1,11 @@
 /**
  * this file contains logic for webpack code-splitting, based on the router
  */
-
 var React = require('react');
-var c = require('../constants');
 var process = require('process');
-var storeMixin = require('helpers/storeMixin');
+var storeMixin = require('project/helpers/storeMixin');
+var constants = require('../constants');
 var RouterStore = require('../RouterStore');
-
-var Header = require('./Header');
-var Footer = require('./Footer');
-var Notify = require('notify/components/Notify');
 
 
 module.exports = React.createClass({
@@ -42,20 +37,20 @@ module.exports = React.createClass({
             switch (route) {
                 case 'help':
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('app/components/Help'));
+                        this.ensureBodyComponent(route, require('project/app/components/Help'));
                     }.bind(this));
                     break;
 
                 case 'flickr':
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('flickr/components/Flickr'));
+                        this.ensureBodyComponent(route, require('project/flickr/components/Flickr'));
                     }.bind(this));
                     break;
 
                 case 'todos':
                 default:
                     require.ensure([], function() {
-                        this.ensureBodyComponent(route, require('todos/components/Todos'));
+                        this.ensureBodyComponent(route, require('project/todos/components/Todos'));
                     }.bind(this));
                     break;
             }
@@ -64,11 +59,6 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return <div>
-            <Header />
-            <Notify />
-            {this.getBodyComponent()}
-            <Footer />
-        </div>;
+        return this.getBodyComponent();
     }
 });

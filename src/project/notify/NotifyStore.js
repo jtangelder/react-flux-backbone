@@ -1,8 +1,8 @@
 var Backbone = require('backbone');
-var Dispatcher = require('dispatcher');
+var Dispatcher = require('project/dispatcher');
 
-var c = require('./constants');
-var FlickrConstants = require('Flickr/constants');
+var constants = require('./constants');
+var FlickrConstants = require('project/flickr/constants');
 
 var NotifyModel = Backbone.Model.extend({
     default: {
@@ -25,7 +25,7 @@ var NotifyModel = Backbone.Model.extend({
                 });
                 break;
 
-            case c.NOTIFY_HIDE:
+            case constants.NOTIFY_HIDE:
             case FlickrConstants.FLICKR_FIND_SUCCESS:
                 this.set({ visible: false });
                 break;
