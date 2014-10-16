@@ -10,6 +10,6 @@ module.exports = {
         "help": 'help'
     },
 
-    ROUTE_DEFAULT: 'todos',
-    ROUTE_TODOS: 'todos'
+    // default route when undefined
+    ROUTE_DEFAULT: 'index'
 };
