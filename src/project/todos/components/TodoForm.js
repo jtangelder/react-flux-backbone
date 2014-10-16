@@ -1,17 +1,12 @@
 var React = require('react');
+var SingleInputForm = require('project/shared/components/SingleInputForm');
 
 
 module.exports = React.createClass({
-    onSubmit: function(ev) {
-        ev.preventDefault();
-        this.props.onAdd(this.refs.input.getDOMNode().value);
+    onSubmit: function(value) {
+        this.props.onAdd(value);
     },
-
     render: function() {
-        return <form className="form-group" onSubmit={this.onSubmit}>
-            <input className="form-control" type="text" required
-                    placeholder="Add a todo..."
-                    ref="input" name="text" />
-        </form>
+        return <SingleInputForm onSubmit={this.onSubmit} placeholder="Add a todo.." />
     }
 });
