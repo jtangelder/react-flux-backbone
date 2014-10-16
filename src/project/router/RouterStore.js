@@ -1,6 +1,6 @@
 var conf = require('./settings');
 var constants = require('./constants');
-var Dispatcher = require('project/dispatcher');
+var Dispatcher = require('project/shared/dispatcher');
 var Backbone = require('backbone');
 
 

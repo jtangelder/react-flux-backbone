@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
 var constants = require('./constants');
-var Dispatcher = require('project/dispatcher');
+var Dispatcher = require('project/shared/dispatcher');
 
 
 var FlickrResult = Backbone.Model.extend({

@@ -24,6 +24,7 @@ the stores just for data.
 - Example with webpack code-splitting based on the router.
 - Minified size is about ~75Kb with Gzip, which includes jQuery (from CDN, ~30Kb), React (~35Kb), Backbone (~7Kb), 
 Underscore.js (~5Kb) and the Flux dispatcher.
+- App module directory structure, inspired by Django.
 
 ### Notes
 Inspired by this article; http://www.toptal.com/front-end/simple-data-flow-in-react-applications-using-flux-and-backbone

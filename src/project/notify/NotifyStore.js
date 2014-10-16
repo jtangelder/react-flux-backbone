@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var Dispatcher = require('project/dispatcher');
+var Dispatcher = require('project/shared/dispatcher');
 
 var constants = require('./constants');
 var FlickrConstants = require('project/flickr/constants');
