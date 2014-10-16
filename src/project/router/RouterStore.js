@@ -7,7 +7,7 @@ var Backbone = require('backbone');
 var RouterModel = Backbone.Model.extend({
     defaults: {
         route: conf.ROUTE_DEFAULT,
-        args: []
+        params: []
     },
 
     initialize: function() {
@@ -47,7 +47,7 @@ var AppRouter = Backbone.Router.extend({
             callback: function() {
                 store.set({
                     route: constants.ROUTE_DEFAULT,
-                    args: []
+                    params: []
                 });
             }
         });
@@ -60,7 +60,7 @@ var AppRouter = Backbone.Router.extend({
     emitRouteAction: function(/* route, args... */) {
         this.store.set({
             route: arguments[0],
-            args: [].slice.call(arguments, 1)
+            params: [].slice.call(arguments, 1)
         });
     }
 });

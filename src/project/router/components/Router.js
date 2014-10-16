@@ -1,5 +1,4 @@
 var React = require('react');
-var constants = require('../constants');
 var storeMixin = require('project/helpers/storeMixin');
 var RouterStore = require('../RouterStore');
 
@@ -12,16 +11,21 @@ module.exports = React.createClass({
     },
 
     render: function() {
+        var props = {
+            route: this.state.RouterStore.get('route'),
+            routeParams: this.state.RouterStore.get('params')
+        };
+
         switch (this.state.RouterStore.get('route')) {
             case 'help':
-                return require('project/app/components/Help')();
+                return require('project/app/components/Help')(props);
 
             case 'flickr':
-                return require('project/flickr/components/Flickr')();
+                return require('project/flickr/components/Flickr')(props);
 
             case 'todos':
             default:
-                return require('project/todos/components/Todos')();
+                return require('project/todos/components/Todos')(props);
         }
     }
 });

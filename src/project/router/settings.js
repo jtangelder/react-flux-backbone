@@ -6,7 +6,7 @@ module.exports = {
     ROUTE_ROUTES: {
         "todos": 'todos',
         "flickr": 'flickr',
-        "flickr/:q": 'flickr',
+        "flickr/:query": 'flickr',
         "help": 'help'
     },
 
