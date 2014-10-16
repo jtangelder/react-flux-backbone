@@ -1,4 +1,4 @@
-var conf = require('project/settings');
+var conf = require('./settings');
 var constants = require('./constants');
 var Dispatcher = require('project/dispatcher');
 var Backbone = require('backbone');

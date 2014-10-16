@@ -1,5 +1,5 @@
 var constants = require('./constants');
-var dispatch = require('project/dispatcher').dispatchAction;
+var dispatch = require('project/helpers/dispatch');
 var Backbone = require('backbone');
 
 
