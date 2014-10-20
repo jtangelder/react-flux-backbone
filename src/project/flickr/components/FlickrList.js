@@ -8,11 +8,11 @@ module.exports = React.createClass({
         }
 
         return <ul className='list-inline'>
-            {this.props.FlickrStore.map(function(result) {
-                return <li key={result.cid}>
+            {this.props.FlickrStore.map((result)=>
+                <li key={result.cid}>
                     <img className="img-thumbnail" src={result.getPhoto()} />
                 </li>
-            })}
+            )}
         </ul>
     }
 });

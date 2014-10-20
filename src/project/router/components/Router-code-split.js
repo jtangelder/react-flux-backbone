@@ -1,5 +1,6 @@
 /**
  * this file contains logic for webpack code-splitting, based on the router
+ * needs to be updated to react 0.12
  */
 var React = require('react');
 var process = require('process');

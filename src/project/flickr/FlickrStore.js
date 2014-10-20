@@ -1,4 +1,5 @@
 var Backbone = require('backbone');
+var BackboneStore = require('project/libs/BackboneStore');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 
@@ -9,14 +10,14 @@ var FlickrResult = Backbone.Model.extend({
     }
 });
 
-var FlickrCollection = Backbone.Collection.extend({
-    model: FlickrResult,
 
-    initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
-    },
+class FlickrCollection extends BackboneStore.Collection {
+    constructor() {
+        this.model = FlickrResult;
+        super();
+    }
 
-    handleDispatch: function(payload) {
+    handleDispatch(payload) {
         switch (payload.actionType) {
             case constants.FLICKR_FIND_SUCCESS:
                 this.reset();
@@ -24,7 +25,6 @@ var FlickrCollection = Backbone.Collection.extend({
                 break;
         }
     }
-});
-
+}
 
 module.exports = new FlickrCollection();

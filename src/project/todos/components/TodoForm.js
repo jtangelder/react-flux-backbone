@@ -7,6 +7,6 @@ module.exports = React.createClass({
         this.props.onAdd(value);
     },
     render: function() {
-        return <SingleInputForm onSubmit={this.onSubmit} placeholder="Add a todo.." />
+        return <SingleInputForm className='form-control' onSubmit={this.onSubmit} placeholder="Add a todo.." />
     }
 });

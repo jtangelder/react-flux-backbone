@@ -22,16 +22,9 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        var input = this.transferPropsTo(
-            <input
-                type="text"
-                className="form-control"
-                value={this.state.value}
-                onChange={this.onChange}
-                required ref="input"
-                name="text" />
-        );
-
-        return <form className="form-group" onSubmit={this.onSubmit}>{input}</form>
+        return <form className="form-group" onSubmit={this.onSubmit}>
+            <input {...this.props} ref="input" type="text"
+                value={this.state.value} onChange={this.onChange} required />
+        </form>
     }
 });

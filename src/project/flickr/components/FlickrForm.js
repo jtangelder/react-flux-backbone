@@ -9,6 +9,7 @@ module.exports = React.createClass({
 
     render: function() {
         return <SingleInputForm
+                    className='form-control'
                     value={this.props.value}
                     onSubmit={this.onSubmit}
                     placeholder="Search for a Flickr tag..." />

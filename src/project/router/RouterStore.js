@@ -2,21 +2,25 @@ var conf = require('./settings');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 var Backbone = require('backbone');
+var BackboneStore = require('project/libs/BackboneStore');
 
 
-var RouterModel = Backbone.Model.extend({
-    defaults: {
-        route: conf.ROUTE_DEFAULT,
-        params: []
-    },
+class RouterModel extends BackboneStore.Model {
+    constructor() {
+        this.defaults = {
+            route: conf.ROUTE_DEFAULT,
+            params: []
+        };
+        super();
+    }
 
-    initialize: function() {
+    initialize() {
         this._router = new AppRouter(this, conf.ROUTE_ROUTES);
-        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
-    },
+        super();
+    }
 
-    handleDispatch: function(payload) {
-        switch(payload.actionType) {
+    handleDispatch(payload) {
+        switch (payload.actionType) {
             case constants.ROUTE_NAVIGATE:
                 this._router.navigate(payload.fragment, {
                     trigger: payload.trigger,
@@ -25,10 +29,11 @@ var RouterModel = Backbone.Model.extend({
                 break;
         }
     }
-});
+}
 
-var AppRouter = Backbone.Router.extend({
-    initialize: function(store, routes) {
+
+class AppRouter extends Backbone.Router {
+    initialize(store, routes) {
         this.store = store;
 
         var route, key;
@@ -55,14 +60,14 @@ var AppRouter = Backbone.Router.extend({
         Backbone.$(document).on("ready", function() {
             Backbone.history.start();
         });
-    },
+    }
 
-    emitRouteAction: function(/* route, args... */) {
+    emitRouteAction(/* route, args... */) {
         this.store.set({
             route: arguments[0],
             params: [].slice.call(arguments, 1)
         });
     }
-});
+}
 
 module.exports = new RouterModel();

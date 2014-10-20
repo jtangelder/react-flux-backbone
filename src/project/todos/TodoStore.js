@@ -1,4 +1,5 @@
 var Backbone = require('backbone');
+var BackboneStore = require('project/libs/BackboneStore');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 
@@ -14,14 +15,13 @@ var Todo = Backbone.Model.extend({
 });
 
 
-var TodoCollection = Backbone.Collection.extend({
-    model: Todo,
+class TodoCollection extends BackboneStore.Collection {
+    constructor() {
+        this.model = Todo;
+        super();
+    }
 
-    initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
-    },
-
-    handleDispatch: function(payload) {
+    handleDispatch(payload) {
         switch(payload.actionType) {
             case constants.TODO_ADD:
                 this.add({ text: payload.text });
@@ -36,6 +36,6 @@ var TodoCollection = Backbone.Collection.extend({
                 break;
         }
     }
-});
+}
 
 module.exports = new TodoCollection();

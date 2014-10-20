@@ -1,21 +1,20 @@
-var Backbone = require('backbone');
+var BackboneStore = require('project/libs/BackboneStore');
 var Dispatcher = require('project/shared/dispatcher');
 
 var constants = require('./constants');
 var FlickrConstants = require('project/flickr/constants');
 
-var NotifyModel = Backbone.Model.extend({
-    default: {
-        text: null,
-        visible: false,
-        closable: true
-    },
+class NotifyStore extends BackboneStore.Model {
+    constructor() {
+        this.default = {
+            text: null,
+            visible: false,
+            closable: true
+        };
+        super();
+    }
 
-    initialize: function() {
-        this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
-    },
-
-    handleDispatch: function(payload) {
+    handleDispatch(payload) {
         switch(payload.actionType) {
             case FlickrConstants.FLICKR_FIND:
                 this.set({
@@ -34,15 +33,15 @@ var NotifyModel = Backbone.Model.extend({
                 this.alert('Loading failed... Please try again.');
                 break;
         }
-    },
+    }
 
-    alert: function(text) {
+    alert(text) {
         this.set({
             text: text,
             visible: true,
             closable: true
         });
     }
-});
+}
 
-module.exports = new NotifyModel();
+module.exports = new NotifyStore();

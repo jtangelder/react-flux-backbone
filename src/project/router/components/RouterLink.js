@@ -9,6 +9,6 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        return this.transferPropsTo(<a onClick={this.navigate}>{this.props.children}</a>)
+        return <a {...this.props} onClick={this.navigate} />
     }
 });

@@ -15,7 +15,7 @@ var webpackConfig = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" }
+            { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" } // also adds ES6 support
         ]
     },
     plugins: [
