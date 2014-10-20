@@ -2,10 +2,10 @@ var conf = require('./settings');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 var Backbone = require('backbone');
-var BackboneStore = require('project/libs/BackboneStore');
+var Store = require('project/libs/Store');
 
 
-class RouterModel extends BackboneStore.Model {
+class RouterModel extends Store.Model {
     constructor() {
         this.defaults = {
             route: conf.ROUTE_DEFAULT,

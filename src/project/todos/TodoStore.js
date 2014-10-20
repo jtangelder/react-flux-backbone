@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var BackboneStore = require('project/libs/BackboneStore');
+var Store = require('project/libs/Store');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 
@@ -15,7 +15,7 @@ var Todo = Backbone.Model.extend({
 });
 
 
-class TodoCollection extends BackboneStore.Collection {
+class TodoCollection extends Store.Collection {
     constructor() {
         this.model = Todo;
         super();

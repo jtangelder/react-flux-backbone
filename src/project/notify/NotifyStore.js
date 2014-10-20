@@ -1,10 +1,10 @@
-var BackboneStore = require('project/libs/BackboneStore');
+var Store = require('project/libs/Store');
 var Dispatcher = require('project/shared/dispatcher');
 
 var constants = require('./constants');
 var FlickrConstants = require('project/flickr/constants');
 
-class NotifyStore extends BackboneStore.Model {
+class NotifyStore extends Store.Model {
     constructor() {
         this.default = {
             text: null,

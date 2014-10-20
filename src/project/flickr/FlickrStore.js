@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var BackboneStore = require('project/libs/BackboneStore');
+var Store = require('project/libs/Store');
 var constants = require('./constants');
 var Dispatcher = require('project/shared/dispatcher');
 
@@ -11,7 +11,7 @@ var FlickrResult = Backbone.Model.extend({
 });
 
 
-class FlickrCollection extends BackboneStore.Collection {
+class FlickrCollection extends Store.Collection {
     constructor() {
         this.model = FlickrResult;
         super();
