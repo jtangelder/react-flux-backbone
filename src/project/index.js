@@ -1,3 +1,5 @@
+require('./helpers/polyfills/Object.assign');
+
 var React = require('react');
 var App = require('./app/components/App');
 
