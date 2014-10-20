@@ -1,5 +1,5 @@
 var constants = require('./constants');
-var dispatch = require('project/helpers/dispatch');
+var dispatch = require('project/shared/helpers/dispatch');
 var _ = require('underscore');
 
 

@@ -1,5 +1,5 @@
 var React = require('react');
-var storeMixin = require('project/helpers/storeMixin');
+var storeMixin = require('project/shared/helpers/storeMixin');
 var RouterStore = require('../RouterStore');
 
 

@@ -1,8 +1,7 @@
+var Backbone = require('backbone');
+var Store = require('project/shared/libs/Store');
 var conf = require('./settings');
 var constants = require('./constants');
-var Dispatcher = require('project/shared/dispatcher');
-var Backbone = require('backbone');
-var Store = require('project/libs/Store');
 
 
 class RouterModel extends Store.Model {

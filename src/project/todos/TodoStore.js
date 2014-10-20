@@ -1,7 +1,6 @@
 var Backbone = require('backbone');
-var Store = require('project/libs/Store');
+var Store = require('project/shared/libs/Store');
 var constants = require('./constants');
-var Dispatcher = require('project/shared/dispatcher');
 
 
 var Todo = Backbone.Model.extend({

@@ -1,7 +1,5 @@
-var Store = require('project/libs/Store');
-var Dispatcher = require('project/shared/dispatcher');
-
 var constants = require('./constants');
+var Store = require('project/shared/libs/Store');
 var FlickrConstants = require('project/flickr/constants');
 
 class NotifyStore extends Store.Model {
