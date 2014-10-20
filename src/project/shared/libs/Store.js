@@ -3,13 +3,18 @@ var Dispatcher = require('project/shared/dispatcher');
 
 
 var baseStore = {
+	/**
+	 * backbone init method
+	 */
     initialize: function() {
         this.dispatchId = Dispatcher.register(this.handleDispatch.bind(this));
     },
 
-    handleDispatch: function() {
-
-    }
+	/**
+	 * handle the dispatcher actions
+	 * @param {Object} payload
+	 */
+    handleDispatch: function(payload) { }
 };
 
 module.exports = {

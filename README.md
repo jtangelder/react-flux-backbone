@@ -13,7 +13,7 @@ python -m SimpleHTTPServer
 ````
 
 ## Features
-- Backbone's collections/models/events as data store.
+- Backbone's collections/models/events as data store, with ES6 classes.
 - Usage of Backbone's router.
 - Flux architecture.
 - React views.
